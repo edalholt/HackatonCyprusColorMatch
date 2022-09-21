@@ -52,7 +52,7 @@ const Home: NextPage = () => {
       <div
         style={{
           backgroundColor: "#284b63",
-          height: "100vh",
+          height: "95vh",
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
