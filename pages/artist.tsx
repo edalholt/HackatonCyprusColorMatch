@@ -14,12 +14,7 @@ const Home: NextPage = () => {
     <div>
         <Header />
         <div style={{backgroundColor: '#284b63', height: '100vh', display: 'flex', alignItems:'center', justifyContent:'center'}}>  
-            <div style={{color: 'white', fontSize: '25px', fontWeight: 'lighter'}}>
-                <p>Gallery by hobby artists</p>
-                <p>Upload a picture of your surroundings</p>
-                <p>Find the perfect, afforable art</p>
-                <p>Match by color</p>
-            </div>
+            <p>Artist</p>
         </div>
     </div>
   )
