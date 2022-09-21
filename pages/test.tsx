@@ -1,32 +1,36 @@
 import type { NextPage } from 'next'
 import { firestore } from '../firebase/clientApp';
 import {collection,QueryDocumentSnapshot,DocumentData,query,where,limit,getDocs} from "@firebase/firestore";
-import { useState } from 'react';
-
-const info = collection(firestore,'test');
-const [data,setData] = useState<QueryDocumentSnapshot<DocumentData>[]>([]);
-
-
-const getTodos = async () => {
-    // construct a query to get up to 10 undone todos 
-    const testQuery = query(info,limit(10));
-    // get the todos
-    const querySnapshot = await getDocs(testQuery);
-    
-    // map through todos adding them to an array
-    const result: QueryDocumentSnapshot<DocumentData>[] = [];
-    querySnapshot.forEach((snapshot) => {
-    result.push(snapshot);
-    });
-    // set it to state
-    setData(result);
- };
+import { useState, useEffect } from 'react';
 
 const Test: NextPage = () => {
-  return !data ? (null) : ( 
+
+const [data, setData] = useState<DocumentData[]>([]);
+const info = collection(firestore,'test');
+
+const getData = async () => {
+ 
+    const testQuery = query(info,limit(10));
+
+    const querySnapshot = await getDocs(testQuery);
+    const result: DocumentData[] = [];
+    querySnapshot.forEach((doc) => {
+      result.push(doc.data());
+    });
+    setData(result);
+    console.log(result)
+ };
+
+ useEffect( () => {
+  getData();
+},[]);
+
+  return !data ? (<>loading</>) : ( 
     <>
     data:
-    {data}
+    {data.map(elem =>
+    elem.data
+    )}
     </>
   )
 }
