@@ -9,15 +9,13 @@ const Header: NextPage = () => {
     const router = useRouter(); 
     
   return (
-    <div style={{backgroundColor: '#284b63', color: 'white', height: 'auto', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', justifyItems:'center'}}>  
-        <div style={{ }}>
-            <p style={{ marginBottom: 0}} >ICON</p>
-            <p style={{ fontSize: 'small', marginTop: 0 }} >artMatch</p>
-        </div>
+    <div style={{ backgroundColor: '#284b63', color: 'white', height: 'auto', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr', justifyItems:'center'}}>  
+        <img style={{ cursor: 'pointer', width: '20%', margin: '5% 20%', placeSelf: 'start'}} src="/logo.svg" onClick={ () => router.push(`/frontpage`)} alt="logo" />
         <p></p>
-        <p onClick={ () => router.push(`/upload`) }>Upload</p>  
-        <p onClick={ () => router.push(`/upload`) }>Explore</p>
-        <p onClick={ () => router.push(`/upload`) }>For the artist</p>     
+        <p></p>
+        <p style={{marginTop: '10%', cursor: 'pointer'}} onClick={ () => router.push(`/upload`) }>Upload</p>  
+        <p style={{marginTop: '10%', cursor: 'pointer'}} onClick={ () => router.push(`/explore`) }>Explore</p>
+        <p style={{marginTop: '10%', cursor: 'pointer'}} onClick={ () => router.push(`/artist`) }>For the artist</p>    
     </div>
   )
 }
